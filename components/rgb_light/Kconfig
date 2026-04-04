@@ -1,0 +1,45 @@
+menu "RGB Light Module Configuration"
+
+    config RGB_LIGHT_ENABLE_TIME
+        int "RGB Light Enable Delay (milliseconds)"
+        default 150
+        range 0 10000
+        help
+            Delay time in milliseconds before the RGB light is enabled.
+            This allows time for hardware initialization and settling.
+            Valid range: 0 - 10000 ms
+
+    config RGB_LIGHT_DISABLE_TIME
+        int "RGB Light Disable Delay (milliseconds)"
+        default 150
+        range 0 10000
+        help
+            Delay time in milliseconds before the RGB light is disabled.
+            This allows for graceful shutdown of the RGB light.
+            Valid range: 0 - 10000 ms
+
+    config RGB_LIGHT_COLOR_RED
+        int "RGB Light Red Channel Intensity (0-255)"
+        default 255
+        range 0 255
+        help
+            Red channel intensity value for RGB light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+    config RGB_LIGHT_COLOR_GREEN
+        int "RGB Light Green Channel Intensity (0-255)"
+        default 255
+        range 0 255
+        help
+            Green channel intensity value for RGB light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+    config RGB_LIGHT_COLOR_BLUE
+        int "RGB Light Blue Channel Intensity (0-255)"
+        default 255
+        range 0 255
+        help
+            Blue channel intensity value for RGB light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+endmenu

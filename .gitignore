@@ -1,0 +1,31 @@
+################################################################################
+# Build and Compilation Artifacts
+################################################################################
+
+# Build directory - contains all compiled objects and binaries
+build/
+
+################################################################################
+# Project Configuration (Development Only)
+################################################################################
+
+# Main project configuration - development version
+# (Keep sdkconfig.defaults in version control instead)
+sdkconfig
+
+# Backup of previous configuration
+sdkconfig.old
+
+################################################################################
+# IDE and Editor Configuration
+################################################################################
+
+# JetBrains IDEs (PyCharm, CLion, IntelliJ)
+.idea/
+
+################################################################################
+# IDF-Specific Files
+################################################################################
+
+# IDF component manager cache
+managed_components/

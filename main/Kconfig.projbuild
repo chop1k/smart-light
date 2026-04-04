@@ -1,0 +1,19 @@
+menu "Main Application Configuration"
+
+    config ENABLE_LED_LIGHT
+        bool "Enable LED Light Module"
+        default y
+        help
+            Enable or disable the LED light module.
+            When enabled, LED light functionality will be available.
+            When disabled, LED light module will not be compiled.
+
+    config ENABLE_RGB_LIGHT
+        bool "Enable RGB Light Module"
+        default y
+        help
+            Enable or disable the RGB light module.
+            When enabled, RGB light functionality will be available.
+            When disabled, RGB light module will not be compiled.
+
+endmenu

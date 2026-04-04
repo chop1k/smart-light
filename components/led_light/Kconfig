@@ -1,0 +1,53 @@
+menu "LED Light Module Configuration"
+
+    config LED_LIGHT_ENABLE_TIME
+        int "LED Light Enable Delay (milliseconds)"
+        default 100
+        range 0 10000
+        help
+            Delay time in milliseconds before the LED light is enabled.
+            This allows time for hardware initialization and settling.
+            Valid range: 0 - 10000 ms
+
+    config LED_LIGHT_DISABLE_TIME
+        int "LED Light Disable Delay (milliseconds)"
+        default 100
+        range 0 10000
+        help
+            Delay time in milliseconds before the LED light is disabled.
+            This allows for graceful shutdown of the LED.
+            Valid range: 0 - 10000 ms
+
+    config LED_LIGHT_COLOR_RED
+        int "LED Light Red Channel Intensity (0-255)"
+        default 255
+        range 0 255
+        help
+            Red channel intensity value for LED light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+    config LED_LIGHT_COLOR_GREEN
+        int "LED Light Green Channel Intensity (0-255)"
+        default 0
+        range 0 255
+        help
+            Green channel intensity value for LED light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+    config LED_LIGHT_COLOR_BLUE
+        int "LED Light Blue Channel Intensity (0-255)"
+        default 0
+        range 0 255
+        help
+            Blue channel intensity value for LED light color.
+            Valid range: 0 (off) - 255 (maximum intensity)
+
+    config LED_LIGHT_BRIGHTNESS
+        int "LED Light brightness (0-100)""
+        default 100
+        range 0 100
+        help
+            Light brightness in percentage implemented by using PWM.
+            Valid range: 0 (light disabled) - 100 (maximum brightness)
+
+endmenu
