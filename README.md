@@ -41,8 +41,6 @@ idf.py build flash monitor
 3. The light should appear within a few seconds
 4. Done
 
-> Note: after turning off the device, the device storage is reset as if it is factory new
-
 ## What it does
 
 - Joins a Zigbee 3.0 network as an end device
@@ -54,22 +52,17 @@ idf.py build flash monitor
 <details>
 <summary>Photos</summary>
 
-<!-- Add your images here -->
-<!-- ![Home Assistant entity](docs/ha_entity.png) -->
-<!-- ![Hardware setup](docs/hardware.jpg) -->
 ![Fading 100%](images/fade_0.png)
 ![Fading 50%](images/fade_1.png)
 ![Fading 0%](images/fade_2.png)
 ![Remote switching off](images/remote_control_0.png)
 ![Remote switching on](images/remote_control_1.png)
 
-_Photos coming soon_
-
 </details>
 
 ## Notes
 
-This is a study project. The code is kept as simple as possible — error handling is minimal and there is no OTA update support. If you are looking for production-ready Zigbee firmware, this is not it.
+This is a study project. The code is kept as simple as possible — error handling is minimal, device is factory new after each reboot and there is no OTA update support. If you are looking for production-ready Zigbee firmware, this is not it.
 
 ## License
 
