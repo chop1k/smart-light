@@ -183,6 +183,9 @@ void esp_zb_app_signal_handler(const esp_zb_app_signal_t *signal_s)
         } else {
             /* commissioning failed */
             ESP_LOGW(TAG, "Failed to initialize Zigbee stack (status: %s)", esp_err_to_name(err_status));
+            ESP_LOGW(TAG, "Doing factory reset...");
+
+            esp_zb_factory_reset();
         }
         break;
     case ESP_ZB_BDB_SIGNAL_STEERING:
