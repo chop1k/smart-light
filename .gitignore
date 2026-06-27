@@ -5,6 +5,9 @@
 # Build directory - contains all compiled objects and binaries
 build/
 
+# Tags file used for searching functions signatures and etc.
+.tags
+
 ################################################################################
 # Project Configuration (Development Only)
 ################################################################################
@@ -22,6 +25,10 @@ sdkconfig.old
 
 # JetBrains IDEs (PyCharm, CLion, IntelliJ)
 .idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
 
 ################################################################################
 # IDF-Specific Files

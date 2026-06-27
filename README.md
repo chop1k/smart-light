@@ -1,53 +1,76 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-H21 | ESP32-H4 | ESP32-P4 | ESP32-S2 | ESP32-S3 | Linux |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | --------- | -------- | -------- | -------- | -------- | ----- |
+# `smart-light`
 
-# Hello World Example
+A simple Zigbee 3.0 smart light built on ESP-IDF, controllable via Home Assistant. Made for learning IoT and embedded development — nothing fancy, just a working bulb you can turn on and off from your phone.
 
-Starts a FreeRTOS task to print "Hello World".
+## Hardware
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+- **Board:** `esp32c6-super-mini board`
+- **Light:** `LED`
+- **Power:** `USB-C`
+- **Coordinator** `Sonoff Dongle-E`
 
-## How to use example
+## Stack
 
-Follow detailed instructions provided specifically for this example.
+- ESP-IDF `v6.0`
+- Zigbee SDK `esp-zigbee-sdk`
+- Home Assistant `2026.6.4` with ZHA or Z2M
 
-Select the instructions depending on Espressif chip installed on your development board:
+## Getting Started
 
-- [ESP32 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/stable/get-started/index.html)
-- [ESP32-S2 Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/get-started/index.html)
+### Prerequisites
 
-
-## Example folder contents
-
-The project **hello_world** contains one source file in C language [hello_world_main.c](main/hello_world_main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt` files that provide set of directives and instructions describing the project's source files and targets (executable, library, or both).
-
-Below is short explanation of remaining files in the project folder.
-
-```
-├── CMakeLists.txt
-├── pytest_hello_world.py      Python script used for automated testing
-├── main
-│   ├── CMakeLists.txt
-│   └── hello_world_main.c
-└── README.md                  This is the file you are currently reading
+```bash
+# Install ESP-IDF
+. $IDF_PATH/export.sh
 ```
 
-For more information on structure and contents of ESP-IDF projects, please refer to Section [Build System](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html) of the ESP-IDF Programming Guide.
+Make sure your Zigbee coordinator is paired and running in Home Assistant before flashing.
 
-## Troubleshooting
+### Build & Flash
 
-* Program upload failure
+```bash
+idf.py set-target esp32c6    # or your target chip
+idf.py menuconfig            # optional, adjust Zigbee channel etc.
+idf.py build flash monitor
+```
 
-    * Hardware connection is not correct: run `idf.py -p PORT monitor`, and reboot your board to see if there are any output logs.
-    * The baud rate for downloading is too high: lower your baud rate in the `menuconfig` menu, and try again.
+### Pairing
 
-## Technical support and feedback
+1. Power on the device — it starts in pairing mode automatically
+2. In Home Assistant, open ZHA / Z2M and start device discovery
+3. The light should appear within a few seconds
+4. Done
 
-Please use the following feedback channels:
+> Note: after turning off the device, the device storage is reset as if it is factory new
 
-* For technical queries, go to the [esp32.com](https://esp32.com/) forum
-* For a feature request or bug report, create a [GitHub issue](https://github.com/espressif/esp-idf/issues)
+## What it does
 
-We will get back to you as soon as possible.
+- Joins a Zigbee 3.0 network as an end device
+- Exposes an On/Off cluster (and optionally a Level Control cluster)
+- Home Assistant picks it up as a standard light entity
+
+## Results
+
+<details>
+<summary>Photos</summary>
+
+<!-- Add your images here -->
+<!-- ![Home Assistant entity](docs/ha_entity.png) -->
+<!-- ![Hardware setup](docs/hardware.jpg) -->
+![Fading 100%](images/fade_0.png)
+![Fading 50%](images/fade_1.png)
+![Fading 0%](images/fade_2.png)
+![Remote switching off](images/remote_control_0.png)
+![Remote switching on](images/remote_control_1.png)
+
+_Photos coming soon_
+
+</details>
+
+## Notes
+
+This is a study project. The code is kept as simple as possible — error handling is minimal and there is no OTA update support. If you are looking for production-ready Zigbee firmware, this is not it.
+
+## License
+
+You can do all you want because it is licensed under [MIT](LICENSE) license.
